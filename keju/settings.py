@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from os import path
+from os import path, getenv
+from django.conf.locale.ja import formats as ja_formats
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,8 +81,13 @@ WSGI_APPLICATION = 'keju.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'keju',
+        'HOST': 'localhost',
+        'PORT': 5432,
+        'USER': 'keju',
+        'PASSWORD': 'p09olp09ol',
+        'ATOMIC_REQUESTS': True
     }
 }
 
@@ -108,9 +114,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGES = (
+    ('en-us', 'English'),
+    ('ja', 'Japanese'),
+)
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -123,8 +134,106 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH_USER_MODEL = 'master.User'
+
+LOCALE_PATHS = (
+    path.join(BASE_DIR, 'locale/'),
+    path.join(Path(__file__).resolve().parent, 'locale/'),
+)
+
+USE_THOUSAND_SEPARATOR = True
+NUMBER_GROUPING = (3, 0)
+
+ja_formats.DATE_FORMAT = 'Y/m/d'                    # default: 'Y年n月j日'
+ja_formats.DATETIME_FORMAT = 'Y/m/d H:i:s'          # default: 'Y年n月j日G:i'
+ja_formats.SHORT_DATETIME_FORMAT = 'Y/m/d H:i'      # default: 'Y/m/d G:i'
+
+ja_formats.DATE_INPUT_FORMATS = ['%Y/%m/%d', '%Y-%m-%d', '%Y%m%d']
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}][{module}:{filename}:{funcName}][{levelname}][{process:d}][{thread:d}]: {message}',
+            # 'datefmt' : '%Y/%m/%d %H:%M:%S',
+            'style': '{',
+        },
+        'simple': {
+            'format': '[{asctime}][{module}][{levelname}]: {message}',
+            'datefmt' : '%Y/%m/%d %H:%M:%S',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
+    'handlers': {
+        'sql_log': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': '/temp/django_sql_log.log',
+            'encoding':'utf8',
+        },
+        'root_log': {
+            'level': 'WARNING',
+            'filters': ['require_debug_false'],
+            # TimedRotatingFileHandler must be used with --noreload option
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'midnight',
+            'interval': 5,
+            'backupCount': 100,
+            'formatter': 'simple',
+            'filename': '/temp/django_root_log.log',
+            'encoding':'utf8',
+        },
+        'guzhou_log': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': '/temp/guzhou_log.log',
+            'encoding':'utf8',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'root': {
+        'handlers': ['console', 'root_log', 'guzhou_log'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'guzhou': {
+            'handlers': ['console', 'guzhou_log'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['console', ],
+            'level': getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': True,
+        },
+        'django.db.backends': {
+            'level': 'INFO',
+            'handlers': ['sql_log'],
+        }
+    }
+}

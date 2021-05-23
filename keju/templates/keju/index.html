@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls %}
+
+{% block nav-sidebar %}{% endblock %}
+{% block breadcrumbs %}{% endblock%}
+{% block content_title %}{% endblock%}
+
+{% block content %}
+{% comment %} <div id="content-main">
+  {% if user.is_staff %}
+    <a href="{% url 'masterAdmin:index' %}">{% translate 'Master Maintenance' %}</a>
+  {% endif %}
+</div> {% endcomment %}
+{% endblock %}
+

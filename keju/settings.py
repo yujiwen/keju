@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'checked_csv',
     'commndata',
+    'keju',
     'pstc',
 ]
 
@@ -163,12 +164,12 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': '[{asctime}][{module}:{filename}:{funcName}][{levelname}][{process:d}][{thread:d}]: {message}',
+            'format': '[{asctime}.{msecs:0<3.0f}][{module}:{filename}:{funcName}][{levelname}][{process:d}][{thread:d}]: {message}',
             # 'datefmt' : '%Y/%m/%d %H:%M:%S',
             'style': '{',
         },
         'simple': {
-            'format': '[{asctime}][{module}][{levelname}]: {message}',
+            'format': '[{asctime}.{msecs:0<3.0f}][{module}][{levelname}]: {message}',
             'datefmt' : '%Y/%m/%d %H:%M:%S',
             'style': '{',
         },
@@ -202,11 +203,11 @@ LOGGING = {
             'filename': '/temp/django_root_log.log',
             'encoding':'utf8',
         },
-        'guzhou_log': {
+        'keju_log': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': '/temp/guzhou_log.log',
+            'filename': '/temp/keju_log.log',
             'encoding':'utf8',
         },
         'console': {
@@ -217,12 +218,12 @@ LOGGING = {
         }
     },
     'root': {
-        'handlers': ['console', 'root_log', 'guzhou_log'],
+        'handlers': ['console', 'root_log', 'keju_log'],
         'level': 'INFO',
     },
     'loggers': {
-        'guzhou': {
-            'handlers': ['console', 'guzhou_log'],
+        'keju': {
+            'handlers': ['console', 'keju_log'],
             'level': 'INFO',
             'propagate': True,
         },

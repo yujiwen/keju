@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'checked_csv',
     'commndata',
-    'keju',
     'pstc',
+    'keju',
 ]
 
 MIDDLEWARE = [

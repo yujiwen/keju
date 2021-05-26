@@ -14,7 +14,7 @@ from commndata.admin import BaseTableAdminMixin, TimeLinedTableAdminMixin, UserA
 class MasterAdminSite(admin.AdminSite):
     site_title = _('Master')
     site_header = _('Master Maintenance')
-    site_url = '/guzhou'
+    site_url = '/keju'
     
     def index(self, request):
         context = {

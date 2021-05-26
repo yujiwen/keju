@@ -6,10 +6,10 @@
 {% block content_title %}{% endblock%}
 
 {% block content %}
-{% comment %} <div id="content-main">
+<div id="content-main">
   {% if user.is_staff %}
     <a href="{% url 'masterAdmin:index' %}">{% translate 'Master Maintenance' %}</a>
   {% endif %}
-</div> {% endcomment %}
+</div>
 {% endblock %}
 

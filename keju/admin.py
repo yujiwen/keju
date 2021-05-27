@@ -16,7 +16,7 @@ class KejuAdminSite(ActiveUserAdminSite):
     def index(self, request):
         context = {
             **self.each_context(request),
-            'title': _('home'),
+            'title': _('keju'),
             'app_list': self.get_app_list(request),
         }
 

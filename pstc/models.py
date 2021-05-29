@@ -1,4 +1,4 @@
-from pstc.codes import SALARY_TABLES
+from pstc.salary_table_codes import SALARY_TABLES
 from commndata.models import TimeLinedTable
 from django.db import models
 from django.utils.translation import gettext_lazy as _

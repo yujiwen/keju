@@ -23,7 +23,7 @@ class MasterAdminSite(admin.AdminSite):
             'app_list': self.get_app_list(request),
         }
 
-        return render(request, 'master/index.html', context=context)
+        return render(request, 'pstc/master/index.html', context=context)
 
 masterAdmin = MasterAdminSite(name='masterAdmin')
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-27 05:09+0900\n"
+"POT-Creation-Date: 2021-05-29 12:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "Master"
 msgstr "マスタ"
 
-#: .\pstc\admin.py:16
+#: .\pstc\admin.py:16 .\pstc\templates\pstc\index.html:11
+#: .\pstc\templates\pstc\index.html:14
 msgid "Master Maintenance"
 msgstr "マスタメンテ"
 
@@ -50,18 +51,18 @@ msgstr "俸給月額"
 msgid "salary adjustment"
 msgstr "調整額"
 
-#: .\pstc\templates\master\index.html:23
+#: .\pstc\templates\pstc\master\index.html:23
 msgid "Recent actions"
 msgstr ""
 
-#: .\pstc\templates\master\index.html:24
+#: .\pstc\templates\pstc\master\index.html:24
 msgid "My actions"
 msgstr ""
 
-#: .\pstc\templates\master\index.html:28
+#: .\pstc\templates\pstc\master\index.html:28
 msgid "None available"
 msgstr "表示権限なし"
 
-#: .\pstc\templates\master\index.html:42
+#: .\pstc\templates\pstc\master\index.html:42
 msgid "Unknown content"
 msgstr "未登録情報"

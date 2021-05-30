@@ -22,7 +22,7 @@ from pstc.admin import masterAdmin
 
 
 urlpatterns = [
-    path('index/', TemplateView.as_view(template_name='pstc/index.html'), name='pstc_site'),
+    path('index/', KejuTemplateView.as_view(), name='pstc_site'),
     path('master/', masterAdmin.urls),
     path('import_pst/', import_public_salary_table),
 ]

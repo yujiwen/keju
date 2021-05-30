@@ -24,5 +24,5 @@ from pstc.admin import masterAdmin
 urlpatterns = [
     path('index/', KejuTemplateView.as_view(), name='pstc_site'),
     path('master/', masterAdmin.urls),
-    path('import_pst/', import_public_salary_table),
+    path('import_pst/', import_public_salary_table, name='import_pst'),
 ]

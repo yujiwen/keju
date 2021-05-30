@@ -8,7 +8,8 @@
 {% block content %}
 <div id="content-main">
   {% if user.is_staff %}
-    <a href="{% url 'masterAdmin:index' %}">{% translate 'Master Maintenance' %}</a>
+  <a href="{% url 'masterAdmin:index' %}">{% translate 'Master Maintenance' %}</a><br />
+  <a href="{% url 'import_pst' %}">{% translate 'Import Public Salary Table' %}</a><br />
   {% endif %}
 </div>
 {% endblock %}

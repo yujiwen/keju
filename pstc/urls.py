@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import TemplateView
 
-from pstc.views import *
+from pstc.views import KejuTemplateView, PstUploadView
 from pstc.admin import masterAdmin
 
 
 urlpatterns = [
-    path('index/', KejuTemplateView.as_view(), name='pstc_site'),
+    path('index/', KejuTemplateView.as_view(), name='pstc-site'),
+    path('import_pst/', PstUploadView.as_view(), name='import-pst'),
     path('master/', masterAdmin.urls),
-    path('import_pst/', import_public_salary_table, name='import_pst'),
 ]

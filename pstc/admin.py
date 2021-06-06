@@ -1,4 +1,4 @@
-from pstc.models import SalaryTable
+from pstc.models import SalaryTable, SalaryTableExcel
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
@@ -61,5 +61,10 @@ class CodeMasterModelAdmin(TimeLinedTableAdminMixin, CsvExportModelMixin, CsvImp
 @admin.register(SalaryTable, site=masterAdmin)
 class SalaryTableModelAdmin(TimeLinedTableAdminMixin, CsvExportModelMixin, CsvImportModelMixin, ModelAdmin):
     # export_fields = ('start_date', 'end_date', 'salary_table', 'salary_level', 'salary_no', 'salary_monthly', 'salary_adjustment')
+    date_hierarchy = 'start_date'
+
+@admin.register(SalaryTableExcel, site=masterAdmin)
+class SalaryTableExcelModelAdmin(TimeLinedTableAdminMixin, ModelAdmin):
+    list_display = ['salary_table', 'sheet_name', 'start_cell', 'start_date', 'end_date']
     date_hierarchy = 'start_date'
 

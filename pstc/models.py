@@ -12,6 +12,10 @@ class SalaryTable(TimeLinedTable):
     salary_monthly = models.IntegerField(verbose_name=_('salary monthly'))          # 俸給月額
     salary_adjustment = models.IntegerField(verbose_name=_('salary adjustment'))    # 俸給の調整額
     
+    @property
+    def sny_salary_no():
+        return 999
+
     class Meta:
         permissions = [
             ('import_salary_table', 'Can import salary_table'),
@@ -26,3 +30,18 @@ class SalaryTable(TimeLinedTable):
     
     def __str__(self):
         return self.salary_table
+
+class SalaryTableExcel(TimeLinedTable):
+    salary_table = models.CharField(max_length=10, verbose_name=_('salary table')
+                                , choices=SALARY_TABLES)                                # 俸給表
+    sheet_name = models.CharField(max_length=10, verbose_name=_('シート名'))
+    start_cell = models.CharField(max_length=10, verbose_name=_('データ開始セル'))
+
+    class Meta:
+        db_table = 'salary_table_excel'
+        verbose_name = _('俸給表取込エクセル設定')
+        verbose_name_plural = _('俸給表取込エクセル設定')
+        constraints = [
+            models.UniqueConstraint(name='salary_table_excel_unique', fields = ['start_date', 'salary_table',]), 
+        ]
+        ordering = ['-start_date', 'salary_table', ]

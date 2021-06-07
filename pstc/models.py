@@ -35,6 +35,9 @@ class SalaryTableExcel(TimeLinedTable):
     salary_table = models.CharField(max_length=10, verbose_name=_('salary table')
                                 , choices=SALARY_TABLES)                                # 俸給表
     sheet_name = models.CharField(max_length=10, verbose_name=_('シート名'))
+    rows = models.IntegerField(verbose_name=_('級'), default=1)
+    cols = models.IntegerField(verbose_name=_('号俸'), default=1)
+    sny_flg = models.BooleanField(verbose_name=_('再任用有無'), default=True)
     start_cell = models.CharField(max_length=10, verbose_name=_('データ開始セル'))
 
     class Meta:

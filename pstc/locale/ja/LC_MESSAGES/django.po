@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-29 12:53+0900\n"
+"POT-Creation-Date: 2021-06-20 15:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,6 @@ msgid "Master"
 msgstr "マスタ"
 
 #: .\pstc\admin.py:16 .\pstc\templates\pstc\index.html:11
-#: .\pstc\templates\pstc\index.html:14
 msgid "Master Maintenance"
 msgstr "マスタメンテ"
 
@@ -31,25 +30,54 @@ msgstr "マスタメンテ"
 msgid "pstc"
 msgstr "公務員給与計算"
 
-#: .\pstc\models.py:8 .\pstc\models.py:20 .\pstc\models.py:21
+#: .\pstc\models.py:42 .\pstc\models.py:61 .\pstc\models.py:62
+#: .\pstc\models.py:72
 msgid "salary table"
 msgstr "俸給表"
 
-#: .\pstc\models.py:10
+#: .\pstc\models.py:44
 msgid "salary level"
 msgstr "級"
 
-#: .\pstc\models.py:11
+#: .\pstc\models.py:45
 msgid "salary no"
 msgstr "号俸"
 
-#: .\pstc\models.py:12
+#: .\pstc\models.py:46
 msgid "salary monthly"
 msgstr "俸給月額"
 
-#: .\pstc\models.py:13
+#: .\pstc\models.py:47
 msgid "salary adjustment"
 msgstr "調整額"
+
+#: .\pstc\models.py:74
+msgid "シート名"
+msgstr ""
+
+#: .\pstc\models.py:75
+msgid "級"
+msgstr ""
+
+#: .\pstc\models.py:76
+msgid "号俸"
+msgstr ""
+
+#: .\pstc\models.py:77
+msgid "再任用有無"
+msgstr ""
+
+#: .\pstc\models.py:78
+msgid "データ開始セル"
+msgstr ""
+
+#: .\pstc\models.py:82 .\pstc\models.py:83
+msgid "俸給表取込エクセル設定"
+msgstr ""
+
+#: .\pstc\templates\pstc\index.html:12
+msgid "Import Public Salary Table"
+msgstr "俸給表取込"
 
 #: .\pstc\templates\pstc\master\index.html:23
 msgid "Recent actions"

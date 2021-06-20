@@ -65,7 +65,7 @@ class SalaryTableModelAdmin(TimeLinedTableAdminMixin, CsvExportModelMixin, CsvIm
     save_as = True
 
 @admin.register(SalaryTableExcel, site=masterAdmin)
-class SalaryTableExcelModelAdmin(TimeLinedTableAdminMixin, ModelAdmin):
+class SalaryTableExcelModelAdmin(TimeLinedTableAdminMixin, CsvExportModelMixin, CsvImportModelMixin, ModelAdmin):
     list_display = ['salary_table', 'sheet_name', 'rows', 'cols', 'sny_flg', 'start_cell', 'start_date', 'end_date']
     date_hierarchy = 'start_date'
     save_as = True

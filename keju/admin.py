@@ -17,7 +17,7 @@ class KejuAdminSite(ActiveUserAdminSite):
         context = {
             **self.each_context(request),
             'title': _('keju'),
-            'app_list': self.get_app_list(request),
+            # 'app_list': self.get_app_list(request),
         }
 
         return render(request, 'keju/index.html', context=context)
